@@ -1,0 +1,89 @@
+﻿@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login</h2>
+
+<div id="messageDiv" style="display:none" class="alert alert-danger"></div>
+<table class="w-25 table table-striped table-bordered">
+    <tbody>
+        <tr>
+            <td>Security Key</td>
+            <td><input type="text" id="key" name="key" /></td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <button id="submit">Submit</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div id="processDiv" style="display:none">Processing.....</div>
+<div id="reservations"></div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#submit").click(function (e) {
+            $.ajax({
+                type: "POST",
+                url: "@Url.Action("Index")",
+                data: { key: $("#key").val() },
+                dataType: "text",
+                success: function (result) {
+                    if (result != "Error")
+                        CallAPI(result);
+                    else {
+                        $("#messageDiv").show();
+                        $("#messageDiv").html("Error");
+                    }
+                },
+                error: function (req, status, error) {
+                    alert(error);
+                }
+            });
+        });
+
+        function CallAPI(token) {
+            $.ajax({
+                type: "GET",
+                url: "https://localhost:7154/Reservation",
+                headers: {
+                    Authorization: 'Bearer ' + token
+                },
+                dataType: 'json',
+                success: function (result, status, xhr) {
+                    ShowData(result);
+                },
+                error: function (xhr, status, error) {
+                    alert(error);
+                }
+            });
+        }
+
+        function ShowData(reservations) {
+            $.ajax({
+                type: "POST",
+                contentType: "application/json",
+                url: "@Url.Action("Reservation")",
+                data: JSON.stringify(reservations),
+                success: function (result) {
+                    $("#reservations").html(result)
+                    $("#messageDiv").hide();
+                },
+                error: function (req, status, error) {
+                    alert(error);
+                }
+            });
+        }
+
+        $(document).ajaxStart(function () {
+            $("#processDiv").show();
+        });
+
+        $(document).ajaxStop(function () {
+            $("#processDiv").hide();
+        });
+    });
+</script>
