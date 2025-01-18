@@ -370,11 +370,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\smkwo\\Downloads\\JWTAPI\\1\\JWTAPI\\JWTAPI.csproj",
+      "projectUniqueName": "C:\\Users\\smkwo\\Desktop\\GitHub\\ASP.NET-Core-8-MVC-jQuery-5stars-JWT-simpleDemo-noEF\\JWTAPI\\JWTAPI.csproj",
       "projectName": "JWTAPI",
-      "projectPath": "C:\\Users\\smkwo\\Downloads\\JWTAPI\\1\\JWTAPI\\JWTAPI.csproj",
+      "projectPath": "C:\\Users\\smkwo\\Desktop\\GitHub\\ASP.NET-Core-8-MVC-jQuery-5stars-JWT-simpleDemo-noEF\\JWTAPI\\JWTAPI.csproj",
       "packagesPath": "C:\\Users\\smkwo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\smkwo\\Downloads\\JWTAPI\\1\\JWTAPI\\obj\\",
+      "outputPath": "C:\\Users\\smkwo\\Desktop\\GitHub\\ASP.NET-Core-8-MVC-jQuery-5stars-JWT-simpleDemo-noEF\\JWTAPI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
